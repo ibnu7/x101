@@ -1,0 +1,1781 @@
+r="001"
+R=gg.prompt({"Type Password"})
+if R [1] == r then
+menu=gg.alert("𝐋𝐨𝐠𝐢𝐧𝐒𝐮𝐜𝐜𝐞𝐬𝐬!!\n", "〔Enter〕")
+else
+Error = "⚠ 𝐖𝐫𝐨𝐧𝐠 𝐏𝐚𝐬𝐬𝐰𝐨𝐫𝐝 ⚠\n"
+print(Error)
+  return
+end
+
+Detector = gg.getFile():match("[^/]+$")
+Name = "𝗞𝗠𝗞𝗭 𝗗𝗘𝗖𝗥𝗬𝗣𝗧𝗢𝗥.lua"
+if Detector == Name then
+else
+  Error = "⚠ 𝐅𝐢𝐥𝐞 𝐑𝐞𝐧𝐚𝐦𝐞 𝐈𝐬 𝐃𝐞𝐭𝐞𝐜𝐭𝐞𝐝\n⚠ 𝐑𝐞𝐯𝐞𝐫𝐭 𝐓𝐨 𝐎𝐫𝐢𝐠𝐢𝐧𝐚𝐥 𝐍𝐚𝐦𝐞 𝐈𝐟 𝐘𝐨𝐮 𝐃𝐨𝐧𝐭 𝐖𝐚𝐧𝐭 𝐄𝐫𝐫𝐨𝐫"
+  print(Error)
+  return
+end
+
+gg.toast("𝗞𝗠𝗞𝗭 𝗗𝗘𝗖𝗥𝗬𝗣𝗧𝗢𝗥")
+gg.setVisible(true)
+LuaLibraryTool = -1
+
+--    ################################   
+--       🇮🇩 KMKZ INDONESIA DECRYPTOR  
+--    ################################ 
+ 
+gg.alert("𝗞𝗠𝗞𝗭 𝗗𝗘𝗖𝗥𝗬𝗣𝗧𝗢𝗥\n\n𝗧𝗵𝗶𝘀 𝗦𝗰𝗿𝗶𝗽𝘁 𝗳𝗼𝗿 𝗗𝗲𝗰𝗿𝘆𝗽𝘁\n𝗛𝗧𝗧𝗣 𝗖𝘂𝘀𝘁𝗼𝗺 & 𝗛𝗧𝗧𝗣 𝗜𝗻𝗷𝗲𝗰𝘁𝗼𝗿 𝗼𝗻𝗹𝘆.", " ⎘ 𝗠𝗘𝗡𝗨")
+
+function HOME()
+  MENU = gg.choice({
+    "〔⎆〕𝗛𝗧𝗧𝗣 𝗖𝘂𝘀𝘁𝗼𝗺 ",
+    "〔⎆〕𝗛𝗧𝗧𝗣 𝗜𝗻𝗷𝗲𝗰𝘁𝗼𝗿 ",
+    "〔⎆〕𝗘𝗫𝗜𝗧"
+  }, nil, (os.date([[𝗧𝗼𝗱𝗮𝘆 : %d/%m/%Y 
+𝗧𝗶𝗺𝗲   : %H:%M
+𝗦𝗰𝗿𝗶𝗽𝘁 𝗖𝗼𝗱𝗲 𝗕𝘆: 𝗞𝗠𝗞𝗭 𝗗𝗘𝗖𝗥𝗬𝗣𝗧𝗢𝗥
+@𝐗𝐃𝐞𝐜𝐫𝐲𝐭𝐨𝐫𝐈𝐝 - @𝐄𝐬𝐭𝐞𝐛𝐚𝐧𝐙𝐱𝐱
+[𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 : https://t.me/kmkz101]
+ ]])) )
+  if MENU == nil then
+  else
+    if MENU == 1 then
+      HttpCustom()
+    end
+    if MENU == 2 then
+      decrypthttpinjet()
+    end
+    if MENU == 3 then
+      BASE()
+    end
+  end
+  LuaLibraryTool = -1
+end
+--    ################################   
+--       🇮🇩 KMKZ INDONESIA DECRYPTOR  
+--    ################################ 
+         
+                      
+function HttpCustom()
+  limit = false
+  function rwmem(Address, SizeOrBuffer)
+    assert(Address ~= nil, "[rwmem]: error, provided address is nil.")
+    _rw = {}
+    if type(SizeOrBuffer) == "number" then
+      _ = ""
+      do
+        do
+          for _FORV_5_ = 1, SizeOrBuffer do
+            _rw[_FORV_5_] = {
+              address = Address - 1 + _FORV_5_,
+              flags = gg.TYPE_BYTE
+            }
+          end
+        end
+      end
+      do
+        do
+          for _FORV_5_, _FORV_6_ in ipairs(gg.getValues(_rw)) do
+            if _FORV_6_.value == 0 and limit == true then
+              return _
+            end
+            _ = _ .. string.format("%02X", _FORV_6_.value & 255)
+          end
+        end
+      end
+      return _
+    end
+    Byte = {}
+    SizeOrBuffer:gsub("..", function(x)
+      Byte[#Byte + 1] = x
+      _rw[#Byte] = {
+        address = Address - 1 + #Byte,
+        flags = gg.TYPE_BYTE,
+        value = x .. "h"
+      }
+    end
+    )
+    gg.setValues(_rw)
+  end
+  
+  function hexdecode(hex)
+    return (hex:gsub("%x%x", function(digits)
+      return string.char(tonumber(digits, 16))
+    end
+    ))
+  end
+  
+  function hexencode(str)
+    return (str:gsub(".", function(char)
+      return string.format("%2x", char:byte())
+    end
+    ))
+  end
+  
+  function Dec2Hex(nValue)
+    nHexVal = string.format("%X", nValue)
+    sHexVal = nHexVal .. ""
+    return sHexVal
+  end
+  
+  function ToInteger(number)
+    return math.floor(tonumber(number) or error("Could not cast '" .. tostring(number) .. "' to number.'"))
+  end
+  ---================================================================================
+  
+  
+  function save(data)
+    local function hexencode_spasi(str)
+      return (str:gsub(".", function(char)
+          return string.format("%02x ", char:byte())
+      end))
+    end
+
+    local function checkMatch(key, str)
+      result = nil
+      
+      for index, value in ipairs(key) do
+          result = str:match(value)
+          if result then 
+              break 
+          end
+      end
+      
+      return result
+    end
+
+    local function strip(s)
+      return (s:gsub("^%s*(.-)%s*$", "%1"))
+    end
+
+    local function prosesData(data)
+
+      local function findExpDate(tbl)
+          local key = {
+              "%d%d%d%d[\45]%d%d[\45]%d%d[\32]%d%d[\58]%d%d",
+              "lifeTime"
+          } 
+          local result = nil
+          
+          for index_tbl, value_tbl in ipairs(tbl) do
+  
+              for index_key, value_key in ipairs(key) do
+                  
+                  if value_tbl:match(value_key) then
+                      result = index_tbl
+                  end
+  
+              end
+          end
+          return result
+      end
+  
+      local function splitString(str, separator)
+          local match_1, match_2 = str:match("(.-)"..separator.."(.*)")
+          local tbl = {}
+  
+          no = 1
+          while (match_2:match("(.-)"..separator.."(.*)") and no < 100) do
+      
+              match_1, match_2 = match_2:match("(.-)"..separator.."(.*)")
+      
+              if hexdecode(match_1):match("[^\x20]+") then
+                  -- print(no.." : "..strip(hexdecode(match_1):gsub("[^\x20-\x7e]+","")))
+                  table.insert(tbl, strip(hexdecode(match_1):gsub("[^\x20-\x7e]+","")))
+              else 
+                  -- print(no.." : Empty")
+                  table.insert(tbl,"N/A")
+              end
+              
+              -- print()
+      --       no = no + 1
+              -- print(hexdecode(match_1):gsub("[^\x20-\x7e]+",""))
+          end
+  
+          return tbl
+      end
+  
+      local function fixedConfig(index, tbl)
+          local result_fixedConfig = {}
+          local beginIndex = index - 4
+          local lastIndex = beginIndex + 31
+  
+          for i = beginIndex, lastIndex do
+              table.insert(result_fixedConfig, tbl[i])
+          end
+  
+          return result_fixedConfig
+      end
+      data = hexencode_spasi(data)
+      data = data:gsub("00", "20")
+      data = data:gsub("20", "z")
+      data = data:gsub("66 61 6c 73 65", "F A L S E")
+      data = data:gsub("\x20", "")
+      data = data:gsub("\n", "")
+      local separator = data:match("FALSE[\x7a]+(.-)[\x7a]+")
+      data = data:gsub(separator, "0a56616c647947616e74656e67")
+      separator = "0a56616c647947616e74656e67"
+      data = data:gsub("z", "20")
+      data = data:gsub("FALSE", "66616c7365")
+
+      local result = splitString(data, separator)
+      local assemblyPointIndex = findExpDate(result)
+      local getConfig = fixedConfig(assemblyPointIndex, result)
+  
+      return getConfig
+    end
+
+local function getOutput(tbl)
+      local cfgRegex = {
+        [1] = {
+            ["name"] = "[㉿] [Payload]",
+            ["regex"] = "[a-zA-Z]+[\x20]+.*[\x5bcrlf\x5d]+"
+        },         
+        [5] = {
+            ["name"] = "[㉿] [ExpireTime]",
+            ["regex"] = "(.*)"
+        },
+        [7] = {
+            ["name"] = "[㉿] [Notes]",
+            ["regex"] = "(.*)"
+        },
+        [8] = {
+            ["name"] = "[㉿] [SSHAdress]",
+            ["regex"] = "[0-9a-zA-Zx\x2e\x2d]+:[%d]+@[%w\x2e\x2d]+:[%w]+"
+        }, 
+        [2] = {
+            ["name"] = "[㉿] [Proxy]",
+            ["regex"] = "[%w\x2e]+[\x3a][%d]+"
+        }, 
+        [13] = {
+            ["name"] = "[㉿] [SNI]",
+            ["regex"] = "[%w\x2e\x2d]+[\x2e]+[%w]+"
+        },
+        [25] = {
+            ["name"] = "[㉿] [Psiphon]",
+            ["regex"] = "(.*)"
+        }, 
+        [22] = {
+            ["name"] = "[㉿] [v2Ray]",
+            ["regex"] = "(.*)"            
+        },
+        [26] = {
+            ["name"] = "[㉿] [NameServer]",
+            ["regex"] = "[%w\x2e\x2d]+[\x2e]+[%w]+"
+        },
+        [27] = {
+            ["name"] = "[㉿] [PubKey]",
+            ["regex"] = "(.*)"
+        },
+        [30] = {
+            ["name"] = "[㉿] [DNS Host]",
+            ["regex"] = "[%w\x2e\x2d]+[\x2e]+[%w]+"
+        }, 
+        [31] = {
+            ["name"] = "[㉿] [OpenVpn]",
+            ["regex"] = "(.*)"
+        }, 
+        [33] = {
+            ["name"] = "[㉿] [isLoginHwid]",      
+            ["regex"] = "(.*)"                  
+        }, 
+        [34] = {
+            ["name"] = "[㉿] [passLocked]",
+            ["regex"] = "(.*)"                        
+        }
+    }
+      
+      local message = "🔓️𝐃𝐞𝐜𝐫𝐲𝐩𝐭 𝐒𝐮𝐜𝐜𝐞𝐬𝐬!\n\n"
+      
+  
+      for index, value in ipairs(tbl) do
+          
+          if cfgRegex[index] and value:match(cfgRegex[index]["regex"]) then
+              local namaKonten = cfgRegex[index]["name"]
+              local valueRegexKonten = value:match(cfgRegex[index]["regex"])
+  
+              -- print(namaKonten.." » "..valueRegexKonten.."\n\n")
+              message = message..namaKonten.." » "..valueRegexKonten.."\n\n"
+          end
+          
+      end
+  
+      message = message.."𝗧𝗢𝗢𝗟𝗦 𝗕𝗬 𝗞𝗠𝗞𝗭 𝗗𝗘𝗖𝗥𝗬𝗣𝗧𝗢𝗥\n[𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 : https://t.me/kmkz101]"
+      
+      
+      return message
+    end
+
+
+    local contentToDecrypt = hexdecode(data)
+    contentToDecrypt = prosesData(hexdecode(data))
+    local hasil = getOutput(contentToDecrypt)
+    io.open(gg.EXT_STORAGE .. "/decrypt.txt", "w"):write(data)
+    gg.alert(hasil)
+    gg.copyText(hasil, false)
+    gg.toast("✓ Decrypt Success And Result Copied To Clipboard..!!")
+  end
+  
+  gg.setRanges(gg.REGION_JAVA_HEAP)
+  gg.searchNumber(":GET / HTTP/", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+  local r = gg.getResults(1)
+  if #r < 1 then
+    gg.toast("Method GET")
+    hc_method2 = true
+  end
+  if hc_method2 then
+    gg.searchNumber("Host: ", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+    local r = gg.getResults(1)
+    if #r < 1 then
+      gg.toast("Host:")
+      hc_method3 = true
+    end
+  end
+  if hc_method3 then
+    gg.searchNumber(":inbounds", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+    local r = gg.getResults(1)
+    if #r < 1 then
+      gg.toast("inbounds")
+      hc_method4 = true
+    end
+  end
+  if hc_method4 then
+    gg.searchNumber(":[crlf]", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+    local r = gg.getResults(1)
+    if #r < 1 then
+      gg.toast("[crlf]")
+      hc_method5 = true
+    end
+  end
+  if hc_method5 then
+    gg.searchNumber("Upgrade: websocket", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+    local r = gg.getResults(1)
+    if #r < 1 then
+      gg.toast("Upgrade: webso")
+      hc_method6 = true
+    end
+  end
+  if hc_method6 then
+    gg.searchNumber(":GET wss:", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+    local r = gg.getResults(1)
+    if #r < 1 then
+      gg.toast("GET wss")
+      hc_method7 = true
+    end
+  end
+  if hc_method7 then
+    gg.searchNumber(":[splitPsiphon][splitPsiphon]", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+    local r = gg.getResults(1)
+    if #r < 1 then
+      gg.toast("splitPsiphon")
+      hc_method8 = true
+    end
+  end
+  if hc_method8 then
+    gg.searchNumber(":[splitPsiphon]", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+    local r = gg.getResults(1)
+    if #r < 1 then
+      gg.toast("splitPsiphon")
+      hc_method9 = true
+    end
+  end
+  if hc_method9 then
+    print("All methods failed")
+    os.exit()
+  end
+  local r = gg.getResults(11)
+  if limit == false then
+    r[1].address = r[1].address - 5376
+  end
+  readedMem = rwmem(r[1].address, 10000)
+  save(readedMem)
+  gg.clearResults()
+end
+
+ --🇮🇩𝐈𝐧𝐝𝐨𝐧𝐞𝐬𝐢𝐚 𝐃𝐞𝐜𝐫𝐲𝐩𝐭𝐨𝐫\n༝ 𝐂𝐨𝐝𝐞𝐝 𝐁𝐲 : ヅ𝗞𝗠𝗞𝗭⚡@𝐧𝐨𝐭𝐲𝐨𝐮𝐫𝐬_𝟑𝟐𝟏 @𝐈𝐫𝐞𝐧𝐞_𝐄𝐬𝐭𝐞𝐛𝐚𝐧 @𝐗𝟓𝐖𝐚𝐠𝐨𝐨𝐧\n༝ 𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝐈𝐄𝐓𝐨𝐨𝐥𝐬 𝐆𝐫𝐮𝐛 - 𝟐𝟎𝟐𝟑", "⍈
+
+
+
+--    ################################   
+--       🇮🇩 KMKZ INDONESIA DECRYPTOR  
+--    ################################          
+--    Telegram: kmkz20                        
+  
+---  ###################################################################
+--        『 Deceyp http injetor Scrypt 』
+---  ###################################################################
+
+function decrypthttpinjet()
+limit = false
+targetInfo = gg.getTargetInfo()
+app = targetInfo.packageName
+local utf8 = {}
+local bit = {
+  data32 = {}
+}
+do
+  do
+    for SRD1_5_ = 1, 32 do
+      bit.data32[SRD1_5_] = 2 ^ (32 - SRD1_5_)
+    end
+  end
+end
+local toby = string.byte
+function utf8.charbytes(s, i)
+  i = i or 1
+  local c = string.byte(s, i)
+  if c > 0 and c <= 127 then
+    do return 1 end
+    return
+  end
+  if c >= 194 and c <= 223 then
+    do return 2 end
+    return
+  end
+  if c >= 224 and c <= 239 then
+    do return 3 end
+    return
+  end
+  if c >= 240 and c <= 244 then
+    return 4
+  end
+  return 1
+end
+
+local ded
+function bit:d2b(arg)
+  if arg == nil then
+    return
+  end
+  local tr, c = {}, arg < 0
+  if c then
+    arg = 0 - arg
+  end
+  do
+    do
+      for SRD1_7_ = 1, 32 do
+        if arg >= self.data32[SRD1_7_] then
+          tr[SRD1_7_] = 1
+          arg = arg - self.data32[SRD1_7_]
+        else
+          tr[SRD1_7_] = 0
+        end
+      end
+    end
+  end
+  if c then
+    tr = self:_bnot(tr)
+    tr = self:b2d(tr) + 1
+    tr = self:d2b(tr)
+  end
+  return tr
+end
+
+function bit:b2d(arg, neg)
+  local nr = 0
+  if arg[1] == 1 and neg == true then
+    arg = self:_bnot(arg)
+    nr = self:b2d(arg) + 1
+    nr = 0 - nr
+  else
+    do
+      for SRD1_7_ = 1, 32 do
+        if arg[SRD1_7_] == 1 then
+          nr = nr + 2 ^ (32 - SRD1_7_)
+        end
+      end
+    end
+  end
+  return nr
+end
+
+function bit:_and(a, b)
+  local op1 = self:d2b(a)
+  local op2 = self:d2b(b)
+  local r = {}
+  do
+    do
+      for SRD1_9_ = 1, 32 do
+        if op1[SRD1_9_] == 1 and op2[SRD1_9_] == 1 then
+          r[SRD1_9_] = 1
+        else
+          r[SRD1_9_] = 0
+        end
+      end
+    end
+  end
+  return self:b2d(r, true)
+end
+
+function bit:_or(a, b)
+  local op1 = self:d2b(a)
+  local op2 = self:d2b(b)
+  local r = {}
+  do
+    do
+      for SRD1_9_ = 1, 32 do
+        if op1[SRD1_9_] == 1 or op2[SRD1_9_] == 1 then
+          r[SRD1_9_] = 1
+        else
+          r[SRD1_9_] = 0
+        end
+      end
+    end
+  end
+  return self:b2d(r, true)
+end
+
+function bit:_xor(a, b)
+  local op1 = self:d2b(a)
+  if op1 == nil then
+    return nil
+  end
+  local op2 = self:d2b(b)
+  if op2 == nil then
+    return nil
+  end
+  local r = {}
+  do
+    do
+      for SRD1_9_ = 1, 32 do
+        if op1[SRD1_9_] == op2[SRD1_9_] then
+          r[SRD1_9_] = 0
+        else
+          r[SRD1_9_] = 1
+        end
+      end
+    end
+  end
+  return self:b2d(r, true)
+end
+
+local switch = {
+  [1] = function(s, pos)
+    local c1 = toby(s, pos)
+    return c1
+  end
+  ,
+  [2] = function(s, pos)
+    local c1 = toby(s, pos)
+    local c2 = toby(s, pos + 1)
+    local int1 = bit:_and(31, c1)
+    local int2 = bit:_and(63, c2)
+    return bit:_or(bit:_lshift(int1, 6), int2)
+  end
+  ,
+  [3] = function(s, pos)
+    local c1 = toby(s, pos)
+    local c2 = toby(s, pos + 1)
+    local c3 = toby(s, pos + 2)
+    local int1 = bit:_and(15, c1)
+    local int2 = bit:_and(63, c2)
+    local int3 = bit:_and(63, c3)
+    local o2 = bit:_or(bit:_lshift(int1, 12), bit:_lshift(int2, 6))
+    local dt = bit:_or(o2, int3)
+    return dt
+  end
+  ,
+  [4] = function(s, pos)
+    local c1 = toby(s, pos)
+    local c2 = toby(s, pos + 1)
+    local c3 = toby(s, pos + 2)
+    local c4 = toby(s, pos + 3)
+    local int1 = bit:_and(15, c1)
+    local int2 = bit:_and(63, c2)
+    local int3 = bit:_and(63, c3)
+    local int4 = bit:_and(63, c4)
+    local o2 = bit:_or(bit:_lshift(int1, 18), bit:_lshift(int2, 12))
+    local o3 = bit:_or(o2, bit:_lshift(int3, 6))
+    local o4 = bit:_or(o3, int4)
+    return o4
+  end
+  
+}
+function bit:_bnot(op1)
+  local r = {}
+  do
+    do
+      for SRD1_6_ = 1, 32 do
+        if op1[SRD1_6_] == 1 then
+          r[SRD1_6_] = 0
+        else
+          r[SRD1_6_] = 1
+        end
+      end
+    end
+  end
+  return r
+end
+
+function bit:_not(a)
+  local op1 = self:d2b(a)
+  local r = self:_bnot(op1)
+  return self:b2d(r, true)
+end
+
+function bit:charCodeAt(s)
+  local pos, int, H, L = 1, 0, 0, 0
+  local slen = string.len(s)
+  local allByte = {}
+  while pos <= slen do
+    local tLen = utf8.charbytes(s, pos)
+    if tLen >= 1 and tLen <= 4 then
+      if tLen == 4 then
+        int = switch[4](s, pos)
+        H = math.floor((int - 65536) / 1024) + 55296
+        L = (int - 65536) % 1024 + 56320
+        table.insert(allByte, H)
+        table.insert(allByte, L)
+      else
+        int = switch[tLen](s, pos)
+        table.insert(allByte, int)
+      end
+    end
+    pos = pos + tLen
+  end
+  return allByte
+end
+
+function bit:_rshift(a, n)
+  local r = 0
+  if a < 0 then
+    r = 0 - self:_frshift(0 - a, n)
+  elseif a >= 0 then
+    r = self:_frshift(a, n)
+  end
+  return r
+end
+
+function bit:_frshift(a, n)
+  local op1 = self:d2b(a)
+  local r = self:d2b(0)
+  local left = 32 - n
+  if n < 32 and n > 0 then
+    do
+      for SRD1_9_ = left, 1, -1 do
+        r[SRD1_9_ + n] = op1[SRD1_9_]
+      end
+    end
+  end
+  return self:b2d(r)
+end
+
+function bit:_lshift(a, n)
+  local op1 = self:d2b(a)
+  local r = self:d2b(0)
+  if n < 32 and n > 0 then
+    do
+      for SRD1_8_ = n, 31 do
+        r[SRD1_8_ - n + 1] = op1[SRD1_8_ + 1]
+      end
+    end
+  end
+  return self:b2d(r, true)
+end
+
+function trim(s)
+  return s:match("^%s*(.*)"):match("(.-)%s*$")
+end
+
+local json = {}
+local kind_of = function(obj)
+  if type(obj) ~= "table" then
+    return type(obj)
+  end
+  local i = 1
+  do
+    do
+      for SRD1_5_ in pairs(obj) do
+        if obj[i] ~= nil then
+          i = i + 1
+        else
+          return "table"
+        end
+      end
+    end
+  end
+  if i == 1 then
+    do return "table" end
+    return
+  end
+  return "array"
+end
+
+local escape_str = function(s)
+  local in_char = {
+    "\\",
+    "\"",
+    "/",
+    "\b",
+    "\f",
+    "\n",
+    "\r",
+    "\t"
+  }
+  local out_char = {
+    "\\",
+    "\"",
+    "/",
+    "b",
+    "f",
+    "n",
+    "r",
+    "t"
+  }
+  do
+    do
+      for SRD1_6_, SRD1_7_ in ipairs(in_char) do
+        s = s:gsub(SRD1_7_, "\\" .. out_char[SRD1_6_])
+      end
+    end
+  end
+  return s
+end
+
+local skip_delim = function(str, pos, delim, err_if_missing)
+  pos = pos + #str:match("^%s*", pos)
+  if str:sub(pos, pos) ~= delim then
+    if err_if_missing then
+      error("Esperado " .. delim .. " posição próxima " .. pos)
+    end
+    return pos, false
+  end
+  return pos + 1, true
+end
+
+local function parse_str_val(str, pos, val)
+  val = val or ""
+  local early_end_error = "Fim da entrada encontrado durante a análise da string."
+  if pos > #str then
+    error(early_end_error)
+  end
+  local c = str:sub(pos, pos)
+  if c == "\"" then
+    return val, pos + 1
+  end
+  if c ~= "\\" then
+    return parse_str_val(str, pos + 1, val .. c)
+  end
+  local esc_map = {
+    b = "\b",
+    f = "\f",
+    n = "\n",
+    r = "\r",
+    t = "\t"
+  }
+  local nextc = str:sub(pos + 1, pos + 1)
+  if not nextc then
+    error(early_end_error)
+  end
+  return parse_str_val(str, pos + 2, val .. (esc_map[nextc] or nextc))
+end
+
+local parse_num_val = function(str, pos)
+  local num_str = str:match("^-?%d+%.?%d*[eE]?[+-]?%d*", pos)
+  local val = tonumber(num_str)
+  if not val then
+    error("Erro ao analisar o número na posição " .. pos .. ".")
+  end
+  return val, pos + #num_str
+end
+
+function json.stringify(obj, as_key)
+  local s = {}
+  local kind = kind_of(obj)
+  if kind == "array" then
+    if as_key then
+      error("Não é possível codificar array como chave.")
+    end
+    s[#s + 1] = "["
+    do
+      do
+        for SRD1_7_, SRD1_8_ in ipairs(obj) do
+          if SRD1_7_ > 1 then
+            s[#s + 1] = ", "
+          end
+          s[#s + 1] = json.stringify(SRD1_8_)
+        end
+      end
+    end
+    s[#s + 1] = "]"
+  elseif kind == "table" then
+    if as_key then
+      error("Não é possível codificar a tabela como chave.")
+    end
+    s[#s + 1] = "{"
+    do
+      do
+        for SRD1_7_, SRD1_8_ in pairs(obj) do
+          if #s > 1 then
+            s[#s + 1] = ", "
+          end
+          s[#s + 1] = json.stringify(SRD1_7_, true)
+          s[#s + 1] = ":"
+          s[#s + 1] = json.stringify(SRD1_8_)
+        end
+      end
+    end
+    s[#s + 1] = "}"
+  else
+    if kind == "string" then
+      do return "\"" .. escape_str(obj) .. "\"" end
+      return
+    end
+    if kind == "number" then
+      if as_key then
+        return "\"" .. tostring(obj) .. "\""
+      end
+      do return tostring(obj) end
+      return
+    end
+    if kind == "boolean" then
+      do return tostring(obj) end
+      return
+    end
+    if kind == "nil" then
+      do return "null" end
+      return
+    end
+    error("tipo unjsonificável,: " .. kind .. ".")
+  end
+  return table.concat(s)
+end
+
+json.null = {}
+function json.parse(str, pos, end_delim)
+  pos = pos or 1
+  if pos > #str then
+    error("Atingiu o fim inesperado da entrada ")
+  end
+  local pos = pos + #str:match("^%s*", pos)
+  local first = str:sub(pos, pos)
+  if first == "{" then
+    do
+      local obj, key, delim_found = {}, true, true
+      pos = pos + 1
+      while true do
+        key, pos = json.parse(str, pos, "}")
+        if key == nil then
+          return obj, pos
+        end
+        if not delim_found then
+          error("Vírgula faltando entre os itens do objeto.")
+        end
+        pos = skip_delim(str, pos, ":", true)
+        obj[key], pos = json.parse(str, pos)
+        pos, delim_found = skip_delim(str, pos, ",")
+      end
+    end
+    return
+  end
+  if first == "[" then
+    do
+      local arr, val, delim_found = {}, true, true
+      pos = pos + 1
+      while true do
+        val, pos = json.parse(str, pos, "]")
+        if val == nil then
+          return arr, pos
+        end
+        if not delim_found then
+          error("Falta vírgula entre os itens do array.")
+        end
+        arr[#arr + 1] = val
+        pos, delim_found = skip_delim(str, pos, ",")
+      end
+    end
+    return
+  end
+  if first == "\"" then
+    do return parse_str_val(str, pos + 1) end
+    return
+  end
+  if first == "-" or first:match("%d") then
+    do return parse_num_val(str, pos) end
+    return
+  end
+  if first == end_delim then
+    do return nil, pos + 1 end
+    return
+  end
+  do
+    local literals = {
+      ["true"] = true,
+      ["false"] = false,
+      null = json.null
+    }
+    do
+      do
+        for SRD1_9_, SRD1_10_ in pairs(literals) do
+          local lit_end = pos + #SRD1_9_ - 1
+          if str:sub(pos, lit_end) == SRD1_9_ then
+            return SRD1_10_, lit_end + 1
+          end
+        end
+      end
+    end
+    local pos_info_str = "position " .. pos .. ": " .. str:sub(pos, pos + 10)
+    error("Sintaxe json inválida começando em " .. pos_info_str)
+  end
+end
+
+function enc(data, b)
+  return (data:gsub(".", function(x)
+    local r, b = "", x:byte()
+    do
+      do
+        for SRD1_6_ = 8, 1, -1 do
+          r = r .. (b % 2 ^ SRD1_6_ - b % 2 ^ (SRD1_6_ - 1) > 0 and "1" or "0")
+        end
+      end
+    end
+    return r
+  end
+  ) .. "0000"):gsub("%d%d%d?%d?%d?%d?", function(x)
+    if #x < 6 then
+      return ""
+    end
+    local c = 0
+    do
+      do
+        for SRD1_5_ = 1, 6 do
+          c = c + (x:sub(SRD1_5_, SRD1_5_) == "1" and 2 ^ (6 - SRD1_5_) or 0)
+        end
+      end
+    end
+    return b:sub(c + 1, c + 1)
+  end
+  ) .. ({
+    "",
+    "??",
+    "?"
+  })[#data % 3 + 1]
+end
+
+function dec(data, b)
+  data = string.gsub(data, "[^" .. b .. "=]", "")
+  return (data:gsub(".", function(x)
+    if x == "?" then
+      return ""
+    end
+    local r, f = "", b:find(x) - 1
+    do
+      do
+        for SRD1_6_ = 6, 1, -1 do
+          r = r .. (f % 2 ^ SRD1_6_ - f % 2 ^ (SRD1_6_ - 1) > 0 and "1" or "0")
+        end
+      end
+    end
+    return r
+  end
+  ):gsub("%d%d%d?%d?%d?%d?%d?%d?", function(x)
+    if #x ~= 8 then
+      return ""
+    end
+    local c = 0
+    do
+      do
+        for SRD1_5_ = 1, 8 do
+          c = c + (x:sub(SRD1_5_, SRD1_5_) == "1" and 2 ^ (8 - SRD1_5_) or 0)
+        end
+      end
+    end
+    return string.char(c)
+  end
+  ))
+end
+
+function ehix9(key, data)
+  local preData, result
+  preData = ""
+  result = ""
+  local bit_key = bit:charCodeAt(key)
+  do
+    local c = 0
+    local c2 = 1
+    while c < #data and not (c >= #data) do
+      preData = preData .. string.char(tonumber(string.sub(data, c2, c + 2), 16))
+      c = c + 2
+      c2 = c2 + 2
+    end
+  end
+  local bit_data = bit:charCodeAt(preData)
+  do
+    local a = 0
+    local b = 0
+    while a < #preData do
+      if b >= #key then
+        b = 0
+      end
+      a = a + 1
+      b = b + 1
+      local xor = bit:_xor(bit_data[a], bit_key[b])
+      if xor ~= nil and xor < 256 then
+        result = result .. string.char(bit:_xor(bit_data[a], bit_key[b]))
+      end
+    end
+  end
+  return result
+end
+
+function decryptEhi(salt, data)
+  data = dec(string.reverse(data), "RkLC2QaVMPYgGJW/A4f7qzDb9e+t6Hr0Zp8OlNyjuxKcTw1o5EIimhBn3UvdSFXs?")
+  return ehix9(salt, string.sub(data, 1, #data))
+end
+
+function decryptEhil(salt, data)
+  data = dec(string.reverse(data), "t6uxKcTwhBn3UvRkLC2QaVM1o5A4f7Hr0Zp8OyjqzDb9e+dSFXsEIimPYgGJW/lN?")
+  return ehix9(salt, string.sub(data, 1, #data))
+end
+
+function rwmem(Address, SizeOrBuffer)
+  assert(Address ~= nil, "[rwmem]: error, endereço fornecido é nulo.")
+  _rw = {}
+  if type(SizeOrBuffer) == "number" then
+    _ = ""
+    do
+      do
+        for SRD1_5_ = 1, SizeOrBuffer do
+          _rw[SRD1_5_] = {
+            address = Address - 1 + SRD1_5_,
+            flags = gg.TYPE_BYTE
+          }
+        end
+      end
+    end
+    do
+      do
+        for SRD1_5_, SRD1_6_ in ipairs(gg.getValues(_rw)) do
+          if SRD1_6_.value == 0 and limit == true then
+            return _
+          end
+          _ = _ .. string.format("%02X", SRD1_6_.value & 255)
+        end
+      end
+    end
+    return _
+  end
+  Byte = {}
+  SizeOrBuffer:gsub("..", function(x)
+    Byte[#Byte + 1] = x
+    _rw[#Byte] = {
+      address = Address - 1 + #Byte,
+      flags = gg.TYPE_BYTE,
+      value = x .. "h"
+    }
+  end
+  )
+  gg.setValues(_rw)
+end
+
+function hexdecode(hex)
+  return (hex:gsub("%x%x", function(digits)
+    return string.char(tonumber(digits, 16))
+  end
+  ))
+end
+
+function hexencode(str)
+  return (str:gsub(".", function(char)
+    return string.format("%2x", char:byte())
+  end
+  ))
+end
+
+function Dec2Hex(nValue)
+  nHexVal = string.format("%X", nValue)
+  sHexVal = nHexVal .. ""
+  return sHexVal
+end
+
+function ToInteger(number)
+  return math.floor(tonumber(number) or error("Could not cast '" .. tostring(number) .. "' to number.'"))
+end
+
+function save(data)
+  io.open(gg.EXT_STORAGE .. "/decrypt.txt", "w"):write(data)
+  gg.toast("🔓 Decrypt Success !!!")
+end
+
+function saveEhi(data)
+  io.open(gg.EXT_STORAGE .. "/ehi.txt", "w"):write(data)
+end
+
+local ehi, configSalt
+local Http = {}
+function Http:New(data)
+  ehi = data
+  if data.configSalt == "" then
+    configSalt = "EVZJNI"
+  else
+    configSalt = data.configSalt
+  end
+end
+
+function Http:Dec(key)
+  if ehi.configVersionCode > 10000 then
+    if ehi[key] then
+      do return decryptEhil(configSalt, ehi[key]) end
+      return
+    end
+    do return "N/A" end
+    return
+  end
+  if ehi[key] then
+    do return decryptEhi(configSalt, ehi[key]) end
+    return
+  end
+  return "N/A"
+end
+
+function Http:TunnelType()
+  if ehi.tunnelType == "ssl_proxy_payload_ssh" then
+    do return "SSL/TLS Proxy ➔ SSH (Custom Payload)" end
+    return
+  end
+    if ehi.tunnelType == "ssl_proxy_ssh" then
+    do return "SSL/TLS Proxy ➔ SSH " end
+    return
+  end
+  if ehi.tunnelType == "http_obfs_shadowsocks" then
+    do return "Shadowsocks ➔ HTTP (Obfs)" end
+    return
+  end
+  if ehi.tunnelType == "ssl_ssh" then
+    do return "SSL/TLS ➔ SSH" end
+    return
+  end
+  if ehi.tunnelType == "proxy_payload_ssh" then
+    do return "SSH ➔ HTTP Proxy ➔ Custom Payload" end
+    return
+  end
+  if ehi.tunnelType == "proxy_ssh" then
+    do return "SSH ➔ HTTP Proxy" end
+    return
+  end
+  if ehi.tunnelType == "direct_shadowsocks" then
+    do return "Direct Shadowsocks" end
+    return
+  end
+  if ehi.tunnelType == "direct_payload_ssh" then
+    do return "SSH ➔ Direct ➔ Custom Payload" end
+    return
+  end
+
+  if ehi.tunnelType == "direct_ssh" then
+    do return "SSH ➔ (Direct)" end
+    return
+  end 
+
+if ehi.tunnelType == "ssl_shadowsocks" then
+    do return "SSL/TLS ➔ Shadowsocks" end
+    return
+  end 
+  
+if ehi.tunnelType == "dnstt_ssh" then
+    do return "DNS (DNSTT) ➔ SSH" end
+    return
+  end 
+
+
+  return ehi.tunnelType
+end
+
+local includes = function(tab, val)
+  do
+    do
+      for SRD1_5_, SRD1_6_ in ipairs(tab) do
+        if SRD1_6_ == val then
+          return true
+        end
+      end
+    end
+  end
+  return false
+end
+
+local ssh_mode = {
+  "ssl_proxy_payload_ssh",
+  "ssl_proxy_ssh",
+  "direct_payload_ssh",
+  "proxy_payload_ssh",
+  "proxy_ssh",
+  "ssl_ssh"
+}
+function parseHttpInjector(data)
+  local jsonData = json.parse(hexdecode(data))
+  gg.toast("🔓 Decrypt Success !!!")
+  Http:New(jsonData)
+  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+  if includes(ssh_mode, ehi.tunnelType) then
+      message = ""
+      message = message .. "*Coded : KMKZ 🇮🇩 ✓\n"    
+ 
+      message = message .. "[㉿] [ConfigVersion] » " .. ehi.configVersionCode .. "\n"
+      message = message .. "[㉿] [Expiration Date] » " .. ehi.configExpiryTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigIdentifier] »  " .. ehi.configIdentifier .. "\n"
+      message = message .. "[㉿] [Build date] » " .. ehi.configTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigSalt] » " .. ehi.configSalt .. "\n" 
+      message = message .. "[㉿] [Custom Routes] » " .. ehi.customRoutes .. "\n"
+ 
+      message = message .. "[㉿] [Encluded Routes] » " .. ehi.excludedRoutes .. "\n"
+      message = message .. "[㉿] [Is Compression?] »\n"
+      message = message .. "[㉿] [Is ConfigLocked?] »\n"
+      message = message .. "[㉿] [Is Default Route?] »\n"
+      message = message .. "[㉿] [Is Tls12?] » false \n"
+      message = message .. "[㉿] [Local Port] » " .. ehi.localPort .. "\n"
+      message = message .. "[㉿] [Lock Modes] » " .. ehi.lockModes .. "\n"
+      message = message .. "[㉿] [Lock Modes Hash] » " .. ehi.lockModesHash .. "\n"
+ 
+      ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+      if ehi.overwriteServerData ~= "" then
+      serverData = json.parse(ehi.overwriteServerData)
+      message = message .. "[㉿] [Server Evozi] » " .. serverData.name .. " (" .. serverData.ip .. ")\n"
+      end
+      
+      message = message .. "[㉿] [Server Data Evozi] » " .. ehi.overwriteServerData .. "\n"
+      message = message .. "[㉿] [SSH Host] » " .. Http:Dec("host") .. "\n" 
+      message = message .. "[㉿] [SSH Port] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [SSH Username] » " .. Http:Dec("user") .. "\n"
+      message = message .. "[㉿] [SSH Password] » " .. Http:Dec("password") .. "\n"
+
+ 
+      message = message .. "[㉿] [SNI] » " .. Http:Dec("sniHostname") .. "\n"
+      message = message .. "[㉿] [Proxy] » " .. Http:Dec("remoteProxy") .. "\n"
+      message = message .. "[㉿] [Payload] » " .. Http:Dec("payload") .. "\n"
+ 
+      message = message .. "[㉿] [Shadowsocks EncryptionMethod] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [Shadowsocks Port] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [ShadowSocksUdpForwarding: true\n"
+ 
+      message = message .. "[㉿] [V2rAdvancedSettings] » false\n"
+      message = message .. "[㉿] [V2rInboundSniffingEnabled] » false\n"
+      message = message .. "[㉿] [V2rIsGuiMode] » true\n"
+      message = message .. "[㉿] [V2rMuxConcurrency] » undefined\n"
+      message = message .. "[㉿] [V2rMuxEnabled] » false\n"
+      message = message .. "[㉿] [V2rTlsAllowInsecure] » true\n"
+      message = message .. "[㉿] [V2rTlsSecurityEnabled] » false\n"
+      message = message .. "[㉿] [Config Message] »\n"
+ 
+      message = message .. "[㉿] [Tunnel Type] »  " .. Http:TunnelType() .. "\n"
+  
+   
+    gg.copyText(message, false)
+    gg.toast(message .. "\n✔️ Copy Text And Exit")
+    print(message)
+    saveEhi(message)
+    
+    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      elseif ehi.tunnelType == "direct_ssh" then
+      message = ""
+      message = message .. "*Coded : KMKZ 🇮🇩 ✓\n"  
+ 
+      message = message .. "[㉿] [ConfigVersion] » " .. ehi.configVersionCode .. "\n"
+      message = message .. "[㉿] [Expiration Date] » " .. ehi.configExpiryTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigIdentifier] » " .. ehi.configIdentifier .. "\n"
+      message = message .. "[㉿] [Build date] » " .. ehi.configTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigSalt] » " .. ehi.configSalt .. "\n" 
+      message = message .. "[㉿] [Custom Routes] » " .. ehi.customRoutes .. "\n"
+ 
+      message = message .. "[㉿] [Encluded Routes] » " .. ehi.excludedRoutes .. "\n"
+      message = message .. "[㉿] [Is Compression?] »\n"
+      message = message .. "[㉿] [Is ConfigLocked?] »\n"
+      message = message .. "[㉿] [Is Default Route?] »\n"
+      message = message .. "[㉿] [Is Tls12?] » false \n"
+      message = message .. "[㉿] [Local Port] » " .. ehi.localPort .. "\n"
+      message = message .. "[㉿] [Lock Modes] » " .. ehi.lockModes .. "\n"
+      message = message .. "[㉿] [Lock Modes Hash] » " .. ehi.lockModesHash .. "\n"
+ 
+      ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+      if ehi.overwriteServerData ~= "" then
+      serverData = json.parse(ehi.overwriteServerData)
+      message = message .. "[㉿] [Server Evozi] » " .. serverData.name .. " (" .. serverData.ip .. ")\n"
+      end
+      
+      message = message .. "[㉿] [Server Data Evozi] » " .. ehi.overwriteServerData .. "\n"
+      message = message .. "[㉿] [SSH Host] » " .. Http:Dec("host") .. "\n" 
+      message = message .. "[㉿] [SSH Port] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [SSH Username] » " .. Http:Dec("user") .. "\n"
+      message = message .. "[㉿] [SSH Password] » " .. Http:Dec("password") .. "\n" 
+      message = message .. "[㉿] [SNI] » " .. Http:Dec("sniHostname") .. "\n"
+      message = message .. "[㉿] [Proxy] » " .. Http:Dec("remoteProxy") .. "\n"
+      message = message .. "[㉿] [Payload] » " .. Http:Dec("payload") .. "\n" 
+      message = message .. "[㉿] [Shadowsocks EncryptionMethod] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [Shadowsocks Port] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [ShadowSocksUdpForwarding: true\n"
+      message = message .. "[㉿] [V2rAdvancedSettings] » false\n"
+      message = message .. "[㉿] [V2rInboundSniffingEnabled] » false\n"
+      message = message .. "[㉿] [V2rIsGuiMode] » true\n"
+      message = message .. "[㉿] [V2rMuxConcurrency] » undefined\n"
+      message = message .. "[㉿] [V2rMuxEnabled] » false\n"
+      message = message .. "[㉿] [V2rTlsAllowInsecure] » true\n"
+      message = message .. "[㉿] [V2rTlsSecurityEnabled] » false\n"
+      message = message .. "[㉿] [Config Message] »\n" 
+      message = message .. "[㉿] [Tunnel Type] »  " .. Http:TunnelType() .. "\n"
+  
+   
+    gg.copyText(message, false)
+    gg.toast(message .. "\n✔️ Copy Text And Exit")
+    print(message)
+    saveEhi(message)
+    
+    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+--   
+  elseif ehi.tunnelType == "dnstt_ssh" then
+      message = ""
+      message = message .. "*Coded : KMKZ 🇮🇩 ✓\n"   
+ 
+      message = message .. "[㉿] [ConfigVersion] » " .. ehi.configVersionCode .. "\n"
+      message = message .. "[㉿] [Expiration Date] » " .. ehi.configExpiryTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigIdentifier] » " .. ehi.configIdentifier .. "\n"
+      message = message .. "[㉿] [Build date] » " .. ehi.configTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigSalt] » " .. ehi.configSalt .. "\n" 
+      message = message .. "[㉿] [Custom Routes] » " .. ehi.customRoutes .. "\n"
+      message = message .. "[㉿] [Dns Type ] » " .. ehi.dnsType .. "\n"
+      message = message .. "[㉿] [DnsttResolver Addres] » " .. Http:Dec("dnsttDnsResolverAddr") .. "\n"
+    --message = message .. "[㉿] [DnsttResolver Mode] » " .. ehi.dnsttResolverMode .. "\n"
+     -- message = message .. "[㉿] [DnsttResolver Profile] » " .. ehi.dnsttResolverProfile .. "\n"
+ 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        
+      if ehi.overwriteServerData ~= "" then
+      serverData = json.parse(ehi.overwriteServerData)
+      message = message .. "[㉿] [Server Evozi] » " .. serverData.name .. " (" .. serverData.ip .. ")\n"
+      end
+      
+      message = message .. "[㉿] [Server Data Evozi] » " .. ehi.overwriteServerData .. "\n"
+      message = message .. "[㉿] [Dnstt Username] » " .. Http:Dec("user") .. "\n"
+      message = message .. "[㉿] [Dnstt Password] » " .. Http:Dec("password") .. "\n"
+      message = message .. "[㉿] [Dnstt Nameserver] » " .. Http:Dec("dnsttNameserver") .. "\n"
+      message = message .. "[㉿] [Dnstt PublicKey] » " .. Http:Dec("dnsttPublicKey") .. "\n"
+ 
+      message = message .. "[㉿] [Encluded Routes] » " .. ehi.excludedRoutes .. "\n"
+      message = message .. "[㉿] [Is Compression?] »\n"
+      message = message .. "[㉿] [Is ConfigLocked?] »\n"
+      message = message .. "[㉿] [Is Default Route?] »\n"
+      message = message .. "[㉿] [Is Tls12?] » false \n"
+      message = message .. "[㉿] [Local Port] » " .. ehi.localPort .. "\n"
+      message = message .. "[㉿] [Lock Modes] » " .. ehi.lockModes .. "\n"
+      message = message .. "[㉿] [Lock Modes Hash] » " .. ehi.lockModesHash .. "\n" 
+      
+      message = message .. "[㉿] [SSH Host] » " .. Http:Dec("host") .. "\n" 
+      message = message .. "[㉿] [SSH Port] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [SSH Username] » " .. Http:Dec("user") .. "\n"
+      message = message .. "[㉿] [Remote Proxy Auth?] » false\n"
+      
+      message = message .. "[㉿] [SNI] » " .. Http:Dec("sniHostname") .. "\n"
+      message = message .. "[㉿] [Proxy] » " .. Http:Dec("remoteProxy") .. "\n"
+      message = message .. "[㉿] [Payload] » " .. Http:Dec("payload") .. "\n"
+ 
+--   
+      
+      message = message .. "[㉿] [Shadowsocks EncryptionMethod] » undefined\n"
+      message = message .. "[㉿] [Shadowsocks Port] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [ShadowSocksUdpForwarding: true\n"
+ 
+      message = message .. "[㉿] [V2rAdvancedSettings] » false\n"
+      message = message .. "[㉿] [V2rInboundSniffingEnabled] » false\n"
+      message = message .. "[㉿] [V2rIsGuiMode] » true\n"
+      message = message .. "[㉿] [V2rMuxConcurrency] » undefined\n"
+      message = message .. "[㉿] [V2rMuxEnabled] » false\n"
+      message = message .. "[㉿] [V2rTlsAllowInsecure: true\n"
+      message = message .. "[㉿] [V2rTlsSecurityEnabled] » false\n"
+      message = message .. "[㉿] [Config Message] » \n"
+      message = message .. "[㉿] [Tunnel Type] »  " .. Http:TunnelType() .. "\n"
+  
+ 
+    gg.copyText(message, false)
+    gg.toast(message .. "\n✅Kelar Dicopy, Tinggal copas ✅")
+    print(message)
+    saveEhi(message)
+    
+    
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    
+elseif ehi.tunnelType == "direct_shadowsocks" then
+      message = ""
+      message = message .. "*Coded : KMKZ 🇮🇩 ✓\n"   
+      message = message .. "[㉿] [ConfigVersion] » " .. ehi.configVersionCode .. "\n"
+      message = message .. "[㉿] [Expiration Date] » " .. ehi.configExpiryTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigIdentifier] » " .. ehi.configIdentifier .. "\n"
+      message = message .. "[㉿] [Build date] » " .. ehi.configTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigSalt] » " .. ehi.configSalt .. "\n" 
+      message = message .. "[㉿] [Custom Routes] » " .. ehi.customRoutes .. "\n"  
+      message = message .. "[㉿] [Dns Type ] » " .. ehi.dnsType .. "\n"
+      message = message .. "[㉿] [DnsttResolver Addres] » " .. Http:Dec("dnsttDnsResolverAddr") .. "\n"
+       message = message .. "[㉿] [DnsttResolver Mode] » N/A \n"
+       message = message .. "[㉿] [DnsttResolver Profile] » N/A \n"
+ 
+      
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      
+  if ehi.overwriteServerData ~= "" then
+      serverData = json.parse(ehi.overwriteServerData)
+      message = message .. "[㉿] [Server Evozi] » " .. serverData.name .. " (" .. serverData.ip .. ")\n"
+      end
+      
+      
+      message = message .. "[㉿] [Server Data Evozi] » " .. ehi.overwriteServerData .. "\n"
+      message = message .. "[㉿] [Dnstt Username] » " .. Http:Dec("user") .. "\n"
+      message = message .. "[㉿] [Dnstt Password] » " .. Http:Dec("password") .. "\n"
+      message = message .. "[㉿] [Dnstt Nameserver] » " .. Http:Dec("dnsttNameserver") .. "\n"
+      message = message .. "[㉿] [Dnstt PublicKey] » " .. Http:Dec("dnsttPublicKey") .. "\n"
+      message = message .. "[㉿] [Encluded Routes] » " .. ehi.excludedRoutes .. "\n"
+      message = message .. "[㉿] [Is Compression?] »\n"
+      message = message .. "[㉿] [Is ConfigLocked?] »\n"
+      message = message .. "[㉿] [Is Default Route?] »\n"
+      message = message .. "[㉿] [Is Tls12?] » false \n"
+      message = message .. "[㉿] [Local Port] » " .. ehi.localPort .. "\n"
+      message = message .. "[㉿] [Lock Modes] » " .. ehi.lockModes .. "\n"
+      message = message .. "[㉿] [Lock Modes Hash] » " .. ehi.lockModesHash .. "\n"
+      message = message .. "[㉿] [SSH Host] » " .. Http:Dec("host") .. "\n" 
+      message = message .. "[㉿] [SSH Port] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [SSH Username] » " .. Http:Dec("user") .. "\n"
+      message = message .. "[㉿] [Remote Proxy Auth?] » false\n"
+      message = message .. "[㉿] [Shadowsocks EncryptionMethod] » " .. ehi.shadowsocksEncryptionMethod .. "\n"
+      message = message .. "[㉿] [Shadowsocks Host] » " .. Http:Dec("shadowsocksHost") .. "\n" 
+      message = message .. "[㉿] [shadowsocksPassword] » " .. Http:Dec("shadowsocksPassword") .. "\n" 
+      message = message .. "[㉿] [Shadowsocks Port] » " .. ehi.shadowsocksPort .. "\n"
+      message = message .. "[㉿] [ShadowSocksUdpForwarding: true\n"
+      message = message .. "[㉿] [SNI] » " .. Http:Dec("sniHostname") .. "\n"
+      message = message .. "[㉿] [Proxy] » " .. Http:Dec("remoteProxy") .. "\n"
+      message = message .. "[㉿] [Payload] » " .. Http:Dec("payload") .. "\n" 
+      message = message .. "[㉿] [V2rAdvancedSettings] » false\n"
+      message = message .. "[㉿] [V2rInboundSniffingEnabled] » false\n"
+      message = message .. "[㉿] [V2rIsGuiMode] » true\n"
+      message = message .. "[㉿] [V2rMuxConcurrency] » undefined\n"
+      message = message .. "[㉿] [V2rMuxEnabled] » false\n"
+      message = message .. "[㉿] [V2rTlsAllowInsecure] » true\n"
+      message = message .. "[㉿] [V2rTlsSecurityEnabled] » false\n"
+      message = message .. "[㉿] [Config Message] » \n" 
+      message = message .. "[㉿] [Tunnel Type] »  " .. Http:TunnelType() .. "\n"
+  
+ 
+    gg.copyText(message, false)
+    gg.toast(message .. "\n✅Kelar Dicopy, Tinggal copas ✅")
+    print(message)
+    saveEhi(message)
+    
+    
+    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    
+elseif ehi.tunnelType == "http_obfs_shadowsocks" then
+      message = ""
+      message = message .. "*Coded : KMKZ 🇮🇩 ✓\n"  
+      message = message .. "[㉿] [ConfigVersion] » " .. ehi.configVersionCode .. "\n"
+      message = message .. "[㉿] [Expiration Date] » " .. ehi.configExpiryTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigIdentifier] » " .. ehi.configIdentifier .. "\n"
+      message = message .. "[㉿] [Build date] » " .. ehi.configTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigSalt] » " .. ehi.configSalt .. "\n" 
+      message = message .. "[㉿] [Custom Routes] » " .. ehi.customRoutes .. "\n"  
+      message = message .. "[㉿] [Dns Type ] » " .. ehi.dnsType .. "\n"
+      message = message .. "[㉿] [DnsttResolver Addres] » " .. Http:Dec("dnsttDnsResolverAddr") .. "\n"
+       message = message .. "[㉿] [DnsttResolver Mode= > N/A \n"
+       message = message .. "[㉿] [DnsttResolver Profile= > N/A \n"
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        
+  if ehi.overwriteServerData ~= "" then
+      serverData = json.parse(ehi.overwriteServerData)
+      message = message .. "[㉿] [Server Evozi] » " .. serverData.name .. " (" .. serverData.ip .. ")\n"
+      end
+      
+      message = message .. "[㉿] [Server Data Evozi] » " .. ehi.overwriteServerData .. "\n"
+ 
+      message = message .. "[㉿] [Dnstt Username] » \n"
+      message = message .. "[㉿] [Dnstt Password] » \n"
+      message = message .. "[㉿] [Dnstt Nameserver] » " .. Http:Dec("dnsttNameserver") .. "\n"
+      message = message .. "[㉿] [Dnstt PublicKey] » " .. Http:Dec("dnsttPublicKey") .. "\n"
+ 
+      message = message .. "[㉿] [Encluded Routes] » " .. ehi.excludedRoutes .. "\n"
+      message = message .. "[㉿] [Is Compression?] »\n"
+      message = message .. "[㉿] [Is ConfigLocked?] »\n"
+      message = message .. "[㉿] [Is Default Route?] »\n"
+      message = message .. "[㉿] [Is Tls12?] » false \n"
+      message = message .. "[㉿] [Local Port] » " .. ehi.localPort .. "\n"
+      message = message .. "[㉿] [Lock Modes] » " .. ehi.lockModes .. "\n"
+      message = message .. "[㉿] [Lock Modes Hash] » " .. ehi.lockModesHash .. "\n"
+ 
+      message = message .. "[㉿] [SSH Host] » " .. Http:Dec("host") .. "\n" 
+      message = message .. "[㉿] [SSH Port] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [SSH User] » N/A\n"
+      message = message .. "[㉿] [SSH Password] » N/A\n"
+          
+      message = message .. "[㉿] [Remote Proxy Auth?] » false\n"
+      message = message .. "[㉿] [Username] » " .. Http:Dec("user") .. "\n"
+      message = message .. "[㉿] [Password] » " .. Http:Dec("password") .. "\n"
+      message = message .. "[㉿] [Shadowsocks EncryptionMethod] » " .. ehi.shadowsocksEncryptionMethod .. "\n"
+      message = message .. "[㉿] [Shadowsocks Host] » " .. Http:Dec("shadowsocksHost") .. "\n" 
+      message = message .. "[㉿] [shadowsocksPassword] » " .. Http:Dec("shadowsocksPassword") .. "\n" 
+      message = message .. "[㉿] [Shadowsocks Port] » " .. ehi.shadowsocksPort .. "\n"
+      message = message .. "[㉿] [ShadowSocksUdpForwarding: true\n"
+      message = message .. "[㉿] [HttpObfsSettings] » " .. Http:Dec("httpObfsSettings") .. "\n" 
+ 
+      
+      message = message .. "[㉿] [SNI Hostname] » " .. Http:Dec("sniHostname") .. "\n"
+      message = message .. "[㉿] [Proxy] » " .. Http:Dec("remoteProxy") .. "\n"
+      message = message .. "[㉿] [Payload] » " .. Http:Dec("payload") .. "\n"
+ 
+      message = message .. "[㉿] [V2rAdvancedSettings] » false\n"
+      message = message .. "[㉿] [V2rInboundSniffingEnabled] » false\n"
+      message = message .. "[㉿] [V2rIsGuiMode] » true\n"
+      message = message .. "[㉿] [V2rMuxConcurrency] » undefined\n"
+      message = message .. "[㉿] [V2rMuxEnabled] » false\n"
+      message = message .. "[㉿] [V2rTlsAllowInsecure: true\n"
+      message = message .. "[㉿] [V2rTlsSecurityEnabled] » false\n"
+      message = message .. "[㉿] [Config Message] »\n"
+ 
+      message = message .. "[㉿] [Tunnel Type] » " .. Http:TunnelType() .. "\n"
+  
+ 
+    gg.copyText(message, false)
+    gg.toast(message .. "\n✅Kelar Dicopy, Tinggal copas ✅")
+    print(message)
+    saveEhi(message)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+         
+     elseif ehi.tunnelType == "ssl_shadowsocks" then
+      message = ""
+      message = message .. "*Coded : KMKZ 🇮🇩 ✓\n"  
+      message = message .. "[㉿] [ConfigVersion] » " .. ehi.configVersionCode .. "\n"
+      message = message .. "[㉿] [Expiration Date] » " .. ehi.configExpiryTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigIdentifier] » " .. ehi.configIdentifier .. "\n"
+      message = message .. "[㉿] [Build date] » " .. ehi.configTimestamp .. "\n"
+      message = message .. "[㉿] [ConfigSalt] » " .. ehi.configSalt .. "\n" 
+      message = message .. "[㉿] [Custom Routes] » " .. ehi.customRoutes .. "\n"  
+      message = message .. "[㉿] [Dns Type ] » " .. ehi.dnsType .. "\n"
+      message = message .. "[㉿] [DnsttResolver Addres] » " .. Http:Dec("dnsttDnsResolverAddr") .. "\n"
+       message = message .. "[㉿] [DnsttResolver Mode= > N/A \n"
+       message = message .. "[㉿] [DnsttResolver Profile= > N/A \n"
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        
+  if ehi.overwriteServerData ~= "" then
+      serverData = json.parse(ehi.overwriteServerData)
+      message = message .. "[㉿] [Server Evozi] » " .. serverData.name .. " (" .. serverData.ip .. ")\n"
+      end
+      
+      message = message .. "[㉿] [Server Data Evozi] » " .. ehi.overwriteServerData .. "\n"
+      message = message .. "[㉿] [Dnstt Username] » " .. Http:Dec("user") .. "\n"
+      message = message .. "[㉿] [Dnstt Password] » " .. Http:Dec("password") .. "\n"
+      message = message .. "[㉿] [Dnstt Nameserver] » " .. Http:Dec("dnsttNameserver") .. "\n"
+      message = message .. "[㉿] [Dnstt PublicKey] » " .. Http:Dec("dnsttPublicKey") .. "\n"
+ 
+      message = message .. "[㉿] [Encluded Routes] » " .. ehi.excludedRoutes .. "\n"
+      message = message .. "[㉿] [Is Compression?] »\n"
+      message = message .. "[㉿] [Is ConfigLocked?] »\n"
+      message = message .. "[㉿] [Is Default Route?] »\n"
+      message = message .. "[㉿] [Is Tls12?] » false \n"
+      message = message .. "[㉿] [Local Port] » " .. ehi.localPort .. "\n"
+      message = message .. "[㉿] [Lock Modes] » " .. ehi.lockModes .. "\n"
+      message = message .. "[㉿] [Lock Modes Hash] » " .. ehi.lockModesHash .. "\n"
+ 
+      message = message .. "[㉿] [SSH Host] » " .. Http:Dec("host") .. "\n" 
+      message = message .. "[㉿] [SSH Port] » " .. ehi.port .. "\n"
+      message = message .. "[㉿] [SSH Username] » " .. Http:Dec("user") .. "\n"
+      message = message .. "[㉿] [Remote Proxy Auth?] » false\n"
+ 
+      message = message .. "[㉿] [Shadowsocks EncryptionMethod] » " .. ehi.shadowsocksEncryptionMethod .. "\n"
+      message = message .. "[㉿] [Shadowsocks Host] » " .. Http:Dec("shadowsocksHost") .. "\n" 
+      message = message .. "[㉿] [shadowsocksPassword] » " .. Http:Dec("shadowsocksPassword") .. "\n" 
+      message = message .. "[㉿] [Shadowsocks Port] » " .. ehi.shadowsocksPort .. "\n"
+      message = message .. "[㉿] [ShadowSocksUdpForwarding: true\n"
+      message = message .. "[㉿] [HttpObfsSettings] » " .. Http:Dec("httpObfsSettings") .. "\n" 
+ 
+      message = message .. "[㉿] [SNI] » " .. Http:Dec("sniHostname") .. "\n"
+      message = message .. "[㉿] [Proxy] » " .. Http:Dec("remoteProxy") .. "\n"
+      message = message .. "[㉿] [Payload] » " .. Http:Dec("payload") .. "\n"
+ 
+      message = message .. "[㉿] [V2rAdvancedSettings] » false\n"
+      message = message .. "[㉿] [V2rInboundSniffingEnabled] » false\n"
+      message = message .. "[㉿] [V2rIsGuiMode] » true\n"
+      message = message .. "[㉿] [V2rMuxConcurrency] » undefined\n"
+      message = message .. "[㉿] [V2rMuxEnabled] » false\n"
+      message = message .. "[㉿] [V2rTlsAllowInsecure: true\n"
+      message = message .. "[㉿] [V2rTlsSecurityEnabled] » false\n"
+      message = message .. "[㉿] [Config Message] »\n"
+ 
+      message = message .. "[㉿] [Tunnel Type] » " .. Http:TunnelType() .. "\n"
+  
+ 
+    gg.copyText(message, false)
+    gg.toast(message .. "\n✅Kelar Dicopy, Tinggal copas ✅")
+    print(message)
+    saveEhi(message)
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+ 
+  elseif ehi.tunnelType == "direct_v2r_vmess" then
+    message = ""
+    message = message .. "*Coded : KMKZ 🇮🇩 ✓\n" 
+    message = message .. "[㉿] [ConfigVersion] » " .. ehi.configVersionCode .. "\n"
+    message = message .. "[㉿] [Expiration Date] » " .. ehi.configExpiryTimestamp .. "\n"
+    message = message .. "[㉿] [ConfigIdentifier] » " .. ehi.configIdentifier .. "\n"
+    message = message .. "[㉿] [Build date] » " .. ehi.configTimestamp .. "\n"
+    message = message .. "[㉿] [ConfigSalt] » " .. ehi.configSalt .. "\n" 
+    message = message .. "[㉿] [Custom Routes] » " .. ehi.customRoutes .. "\n"
+    message = message .. "[㉿] [Excluded Routes] » " .. ehi.excludedRoutes .. "\n"
+ 
+    message = message .. "[㉿] [Protocol] » " .. Http:Dec("v2rProtocol") .. "\n"
+    message = message .. "[㉿] [Host] » " .. Http:Dec("v2rHost") .. "\n"
+    message = message .. "[㉿] [Port] » " .. Http:Dec("v2rPort") .. "\n"
+    message = message .. "[㉿] [User ID] » " .. Http:Dec("v2rUserId") .. "\n"
+    message = message .. "[㉿] [Alter ID] » " .. Http:Dec("v2rAlterId") .. "\n"
+    message = message .. "[㉿] [Security] » " .. Http:Dec("v2rVlessSecurity") .. "\n"
+    if ehi.v2rNetwork and ehi.v2rNetwork ~= "" then
+      message = message .. "[㉿] [Network Type] » " .. Http:Dec("v2rNetwork") .. "\n"
+    end
+    if ehi.v2rWsHeader and ehi.v2rWsHeader ~= "" then
+      message = message .. "[㉿] [Header] » " .. Http:Dec("v2rWsHeader") .. "\n"
+    end
+    if ehi.v2rWsPath and ehi.v2rWsPath ~= "" then
+      message = message .. "[㉿] [Header Path] » " .. Http:Dec("v2rWsPath") .. "\n"
+    end
+    if ehi.v2rTlsSni and ehi.v2rTlsSni ~= "" then
+      message = message .. "[㉿] [TLS SNI] » " .. Http:Dec("v2rTlsSni") .. "\n"
+    end
+ 
+    message = message .. "[㉿] [V2ray Advanced Sittings] » \n"
+    message = message .. "[㉿] [V2rayInboundSniffingEnabled] » \n"
+    message = message .. "[㉿] [V2rayKcpHeaderType] » " .. Http:Dec("v2rKcpHeaderType") .. "\n"
+    message = message .. "[㉿] [V2rayMuxConcurrency] » " .. Http:Dec("v2rMuxConcurrency") .. "\n"
+    message = message .. "[㉿] [V2ray Mux Enabled] » \n"
+    message = message .. "[㉿] [V2ray Quick Header Type] » " .. Http:Dec("v2rVlessSecurity") .. "\n"
+    message = message .. "[㉿] [V2ray Quick Security] » " .. Http:Dec("v2rQuicSecurity") .. "\n"
+    message = message .. "[㉿] [V2raySs Security] » " .. Http:Dec("v2rSsSecurity") .. "\n"
+    message = message .. "[㉿] [V2ray Tcp Header Type] » " .. Http:Dec("v2rTcpHeaderType") .. "\n"
+    message = message .. "[㉿] [V2ray Tls Allow InSecure] » \n"
+    message = message .. "[㉿] [V2ray Tls Security Enabled] » \n"
+    --------------------------------------------------------------------------------------------------------------------------------------
+      if ehi.v2rRawJson then
+	message = message .. "[㉿] V2rayConfig] » " .. Http:Dec("v2rRawJson") .. "\n\n"
+			end 
+--------------------------------------------------------------------------------------------------------------------------------    
+  if ehi.overwriteServerData ~= "" then
+      serverData = json.parse(ehi.overwriteServerData)
+      message = message .. "[㉿] [Server Evozi] » " .. serverData.name .. " (" .. serverData.ip .. ")\n"
+      end
+      
+    message = message .. "[㉿] [Server Data Evozi] » " .. ehi.overwriteServerData .. "\n"
+    message = message .. "[㉿] [SSH Host] » " .. Http:Dec("host") .. "\n" 
+    message = message .. "[㉿] [SSH Port] » " .. ehi.port .. "\n"
+    message = message .. "[㉿] [Username] » " .. Http:Dec("user") .. "\n"
+    message = message .. "[㉿] [Password] » " .. Http:Dec("password") .. "\n"
+  
+    message = message .. "[㉿] [SNI Hostname] »\n"
+    message = message .. "[㉿] [Remote Proxy] » " .. Http:Dec("remoteProxy") .. "\n"
+    message = message .. "[㉿] [Payload] » " .. Http:Dec("payload") .. "\n"
+  
+  --message = message .. "[㉿] [Is Compression?] »\n"
+   -- message = message .. "[㉿] [Is ConfigLocked?] »\n"
+    --message = message .. "[㉿] [Is Default Route?] »\n"
+  --  message = message .. "[㉿] [Is Tls12?] » false \n"
+    message = message .. "[㉿] [Local Port] » " .. ehi.localPort .. "\n"
+    message = message .. "[㉿] [Lock Modes] » " .. ehi.lockModes .. "\n"
+    message = message .. "[㉿] [Lock Modes Hash] » " .. ehi.lockModesHash .. "\n"
+    message = message .. "[㉿] [Config Message] » \n"
+    message = message .. "[㉿] [Tunnel Type] » V2Ray \n"
+
+  
+    gg.copyText(message, false)
+    gg.toast(message .. "\nKelar Dicopy, Tinggal copas ✅")
+    print(message)
+    saveEhi(message)
+  end
+  os.exit()
+end
+
+function HttpInjector()
+  limit = true
+  gg.clearResults()
+  gg.setVisible(false)
+  gg.setRanges(gg.REGION_C_ALLOC)
+  gg.searchNumber("h 7B 22 63 6F 6E 66 69 67 45 78 70 69 72 79 54 69 6D 65 73 74", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+  local r = gg.getResults(1)
+  if #r < 1 then
+    gg.toast("💾 Metode 1 Gagal")
+    hi_method2 = true
+  end
+  if hi_method2 then
+    gg.searchNumber("h 7B 22 63 6F 6E 66 69 67 49 64 65 6E 74 69 66 69 65 72 22 3A", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+    local r = gg.getResults(1)
+    if #r < 1 then
+      print("id:\n💾 Tidak ada file yang ditemukan di memori\n")
+      print(" ⚡Impor File dan Coba Lagi tanpa Menutup Http Injector.\n\n")
+      os.exit()
+    end
+  end
+  gg.searchNumber("h7B", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1, 0)
+  local r = gg.getResults(1000)
+  readedMem = rwmem(r[1].address, 50000)
+  save(hexdecode(readedMem))
+  do
+    do
+      for SRD1_5_, SRD1_6_ in ipairs(r) do
+        r[SRD1_5_].flags = gg.TYPE_FLOAT
+        r[SRD1_5_].value = "1000"
+      end
+    end
+  end
+  gg.setValues(r)
+  gg.clearResults()
+  parseHttpInjector(readedMem)
+end                 
+                                           
+if app == "com.evozi.injector" then
+  HttpInjector()
+elseif app == "com.evozi.injector.lite" then
+  HttpInjector()                                     
+ else
+end
+gg.clearResults()
+os.exit()
+pcall(load(decrypthttpinjet))
+prima()
+end   
+
+
+--    ################################   
+--       🇮🇩 KMKZ INDONESIA DECRYPTOR  
+--    ################################          
+
+--    ################################   
+--       🇮🇩 KMKZ INDONESIA DECRYPTOR  
+--    ################################ 
+ 
+-----=ヅ𝗞𝗠𝗞𝗭⚡
+function BASE()
+  print("⠄⠄⠄⠄⠄⣀⣀⣤⣤⣴⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣦⣤⣤⣄⣀⡀⠄⠄⠄⠄⠄⠠ ")print("⠄⠄⠄⣴⣿⣿⡿⣿⢿⣟⣿⣻⣟⡿⣟⣿⣟⡿⣟⣿⣻⣟⣿⣻⢿⣻⡿⣿⢿⣷⣆⠄⠄⠄⠠ ")print("⠄⠄⢘⣿⢯⣷⡿⡿⡿⢿⢿⣷⣯⡿⣽⣞⣷⣻⢯⣷⣻⣾⡿⡿⢿⢿⢿⢯⣟⣞⡮⡀⠄⠄⠠ ")print("⠄⠄⢸⢞⠟⠃⣉⢉⠉⠉⠓⠫⢿⣿⣷⢷⣻⣞⣿⣾⡟⠽⠚⠊⠉⠉⠉⠙⠻⣞⢵⠂⠄⠄⠠") print("⠄⠄⢜⢯⣺⢿⣻⣿⣿⣷⣔⡄⠄⠈⠛⣿⣿⡾⠋⠁⠄⠄⣄⣶⣾⣿⡿⣿⡳⡌⡗⡅⠄⠄⠠") print("⠄⠄⢽⢱⢳⢹⡪⡞⠮⠯⢯⡻⡬⡐⢨⢿⣿⣿⢀⠐⡥⣻⡻⠯⡳⢳⢹⢜⢜⢜⢎⠆⠄⠄⠠") print("⠄⠠⣻⢌⠘⠌⡂⠈⠁⠉⠁⠘⠑⢧⣕⣿⣿⣿⢤⡪⠚⠂⠈⠁⠁⠁⠂⡑⠡⡈⢮⠅⠄⠄⠠ ")print("⠄⠠⣳⣿⣿⣽⣭⣶⣶⣶⣶⣶⣺⣟⣾⣻⣿⣯⢯⢿⣳⣶⣶⣶⣖⣶⣮⣭⣷⣽⣗⠍⠄⠄⠠") print("⠄⢀⢻⡿⡿⣟⣿⣻⣽⣟⣿⢯⣟⣞⡷⣿⣿⣯⢿⢽⢯⣿⣻⣟⣿⣻⣟⣿⣻⢿⣿⢀⠄⠄⠠ ")print("⠄⠄⡑⡏⠯⡯⡳⡯⣗⢯⢟⡽⣗⣯⣟⣿⣿⣾⣫⢿⣽⠾⡽⣺⢳⡫⡞⡗⡝⢕⠕⠄⠄⠄⠠ ")print("⠄⠄⢂⡎⠅⡃⢇⠇⠇⣃⣧⡺⡻⡳⡫⣿⡿⣟⠞⠽⠯⢧⣅⣃⠣⠱⡑⡑⠨⢐⢌⠂⠄⠄⠠ ")print("⠄⠄⠐⠼⣦⢀⠄⣶⣿⢿⣿⣧⣄⡌⠂⠢⠩⠂⠑⣁⣅⣾⢿⣟⣷⠦⠄⠄⡤⡇⡪⠄⠄⠄⠠ ")print("⠄⠄⠄⠨⢻⣧⡅⡈⠛⠿⠿⠿⠛⠁⠄⢀⡀⠄⠄⠘⠻⠿⠿⠯⠓⠁⢠⣱⡿⢑⠄⠄⠄⠄⠠ ")print("⠄⠄⠄⠈⢌⢿⣷⡐⠤⣀⣀⣂⣀⢀⢀⡓⠝⡂⡀⢀⢀⢀⣀⣀⠤⢊⣼⡟⡡⡁⠄⠄⠄⠄⠠ ")print("⠄⠄⠄⠄⠈⢢⠚⣿⣄⠈⠉⠛⠛⠟⠿⠿⠟⠿⠻⠻⠛⠛⠉⠄⣠⠾⢑⠰⠈⠄⠄⠄⠄⠄⠠ ")print("⠄⠄⠄⠄⠄⠄⠑⢌⠿⣦⡡⣱⣸⣸⣆⠄⠄⠄⣰⣕⢔⢔⠡⣼⠞⡡⠁⠁⠄⠄⠄⠄⠄⠄⠠ ")print("⠄⠄⠄⠄⠄⠄⠄⠄⠑⢝⢷⣕⡷⣿⡿⠄⠄⠠⣿⣯⣯⡳⡽⡋⠌⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠ ")print("⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⢮⣿⣽⣯⠄⠄⢨⣿⣿⡷⡫⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠ ")print("⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⠙⠝⠂⠄⢘⠋⠃⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠ ")print("⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠ ⠄⠄⠄⠄⠄⠄⠄⠄🇮🇩 𝗞𝗠𝗞𝗭 𝗗𝗘𝗖𝗥𝗬𝗣𝗧𝗢𝗥 🇮🇩 ⠄⠄⠄⠄⠄⠄⠄⠄⠠")
+  print("⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠ ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠")
+  
+  print("𝐒𝐩𝐞𝐜𝐢𝐚𝐥 𝐓𝐡𝐚𝐧𝐤𝐬\n@𝐗𝐃𝐞𝐜𝐫𝐲𝐭𝐨𝐫𝐈𝐝\n@𝐄𝐬𝐭𝐞𝐛𝐚𝐧𝐙𝐱𝐱\n@𝐧𝐨𝐭𝐲𝐨𝐮𝐫𝐬_𝟑𝟐𝟏\n𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝐈𝐄𝐓𝐨𝐨𝐥𝐬 𝐆𝐫𝐮𝐛 - 𝟐𝟎𝟐𝟑\n\n𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 : https://t.me/kmkz101")
+    print("⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠ ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠")
+    print("⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠ ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠")
+
+  
+  gg.skipRestoreState()
+  gg.setVisible(true)
+  os.exit()
+end
+
+while true do
+  if gg.isVisible(true) then
+    LuaLibraryTool = 1
+    gg.setVisible(false)
+  end
+  if LuaLibraryTool == 1 then
+    HOME()
+  end
+end
+
